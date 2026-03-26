@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/claude-toolkit-mascot.png" width="200" alt="claude-toolkit mascot">
+  <img src="assets/claude-toolkit-mascot.png" width="400" alt="claude-toolkit mascot">
   <br><br>
   <img src="https://img.shields.io/badge/claude--code-skills_%26_commands-7c3aed?style=for-the-badge" alt="claude-toolkit">
   <br>
