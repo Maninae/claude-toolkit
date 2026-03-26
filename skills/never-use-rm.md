@@ -1,3 +1,8 @@
+---
+name: never-use-rm
+description: Always use `trash` instead of `rm` for safe, reversible file deletion on macOS
+---
+
 # Never Use `rm`, Only `trash`
 
 Always use the `trash` command to delete files or directories instead of `rm`. This moves items to the macOS Trash, allowing for recovery if a mistake is made.

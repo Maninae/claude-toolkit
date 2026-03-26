@@ -12,7 +12,7 @@ This workflow reads the most recent session history to understand what was worke
 
 // turbo
 ```bash
-echo "=== Recent Session Briefs ===" && for dir in $(ls -1t .agent/history/ | head -5); do echo ""; echo "📁 $dir"; cat ".agent/history/$dir/BRIEF.md" 2>/dev/null || echo "(no brief)"; done
+echo "=== Recent Session Briefs ===" && for dir in $(ls -1t .claude/history/ | head -5); do echo ""; echo "📁 $dir"; cat ".claude/history/$dir/BRIEF.md" 2>/dev/null || echo "(no brief)"; done
 ```
 
 This gives a quick overview of the last 5 sessions. Use the keywords to decide which sessions are relevant.
@@ -21,7 +21,7 @@ This gives a quick overview of the last 5 sessions. Use the keywords to decide w
 
 // turbo
 ```bash
-cat .agent/history/$(ls -1t .agent/history/ | head -1)/session.md
+cat .claude/history/$(ls -1t .claude/history/ | head -1)/session.md
 ```
 
 This reads the full `session.md` from the most recent session.
@@ -31,7 +31,7 @@ This reads the full `session.md` from the most recent session.
 If you spotted a relevant session in the briefs, read its full content:
 
 ```bash
-cat .agent/history/<session-dir>/session.md
+cat .claude/history/<session-dir>/session.md
 ```
 
 ### 4. (Optional) Read Multiple Full Sessions
@@ -40,9 +40,9 @@ If you need deeper context:
 
 // turbo
 ```bash
-for dir in $(ls -1t .agent/history/ | head -3); do
+for dir in $(ls -1t .claude/history/ | head -3); do
   echo "=== $dir ==="
-  cat ".agent/history/$dir/session.md"
+  cat ".claude/history/$dir/session.md"
   echo ""
 done
 ```
@@ -53,7 +53,7 @@ Some sessions may have additional context files (artifacts, plans, etc.):
 
 // turbo
 ```bash
-ls -la .agent/history/$(ls -1t .agent/history/ | head -1)/
+ls -la .claude/history/$(ls -1t .claude/history/ | head -1)/
 ```
 
 ---
@@ -74,11 +74,5 @@ When reviewing session history, focus on:
 
 ## After Reading
 
-1. **Create a new session** following the GEMINI.md rules:
-   ```bash
-   mkdir -p .agent/history/$(date +%Y%m%d-%H%M%S)_{adhoc_or_description}
-   ```
-
-2. **Start your session.md** to track today's work
-
-3. **Reference the previous session's next steps** as your starting point
+1. **Reference the previous session's next steps** as your starting point
+2. **Pick up where you left off**

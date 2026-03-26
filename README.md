@@ -1,123 +1,59 @@
-# llms_shared_context — Personal LLM Knowledge Hub
+# claude-toolkit
 
-Your centralized, tool-agnostic repository for skills, workflows, and agent configuration that works across **any** LLM coding assistant.
+Central skill and command store for Claude Code. Edit here, push, pull on another machine — symlinks keep everything in sync.
 
-## Philosophy
+## Install
 
-- **One source of truth** — Update skills/workflows once, propagate everywhere
-- **Tool-agnostic** — Works with Gemini, Claude Code, Cursor, and any future tools
-- **Owner-specific** — Your personal patterns and preferences, not tied to any tool
+```bash
+git clone git@github.com:ojwang/claude-toolkit.git ~/Developer/claude-toolkit
+cd ~/Developer/claude-toolkit
+./install.sh
+```
 
-## Directory Structure
+This symlinks every item in `skills/` and `commands/` into `~/.claude/skills/` and `~/.claude/commands/`. Existing non-symlink files are skipped with a warning.
+
+## Structure
 
 ```
-{ROOT}/llms_shared_context/
-├── skills/              # Reusable skills (SKILL.md format)
+claude-toolkit/
+├── install.sh              # Symlink installer
+├── skills/                 # 24 skills (auto-loaded by Claude Code)
+│   ├── writing-plans/
+│   ├── executing-plans/
+│   ├── planning-with-files/
+│   ├── senior-architect/
+│   ├── senior-fullstack/
+│   ├── frontend-dev-guidelines/
+│   ├── bun-development/
+│   ├── javascript-mastery/
+│   ├── ui-ux-pro-max/
+│   ├── canvas-design/
+│   ├── core-components/
+│   ├── react-best-practices/
 │   ├── systematic-debugging/
+│   ├── verification-before-completion/
 │   ├── playwright-skill/
-│   └── ...
-│
-├── workflows/           # Core workflows (resume, wrapup, etc.)
-│   ├── resume.md
-│   ├── wrapup.md
-│   └── ...
-│
-├── templates/           # Templates for init script
-│   └── AGENT_INSTRUCTIONS.template.md
-│
-├── scripts/             # Management scripts
-│   ├── init.sh          # Initialize new repos
-│   └── update.sh        # Update existing repos
-│
-└── README.md            # This file
+│   ├── webapp-testing/
+│   ├── autonomous-agent-patterns/
+│   ├── dispatching-parallel-agents/
+│   ├── subagent-driven-development/
+│   ├── mcp-builder/
+│   ├── file-organizer/
+│   ├── app-store-optimization/
+│   ├── never-use-rm.md
+│   └── xcode.md
+└── commands/               # 8 commands (user-invocable via /name)
+    ├── resume.md
+    ├── wrapup.md
+    ├── commit.md
+    ├── push.md
+    ├── gmp.md
+    ├── cc.md
+    ├── trawl.md
+    └── grill.md
 ```
 
-## Quick Start
-
-### Initialize a New Repo
-
-```bash
-{ROOT}/llms_shared_context/scripts/init.sh /path/to/repo
-```
-
-This creates:
-- `.agent/skills` → symlink to `~/llms/skills`
-- `.agent/workflows` → symlink to `~/llms/workflows`
-- `.agent/history/`, `techdocs/`, `rules/` → local (project-specific)
-- `GEMINI.md` → local agent instructions (customize per project)
-- `CLAUDE.md` → symlink to GEMINI.md
-- `.cursorrules` → symlink to GEMINI.md
-
-### Update an Existing Repo
-
-```bash
-{ROOT}/llms_shared_context/scripts/update.sh /path/to/repo
-```
-
-Converts existing local skills/workflows to symlinks.
-
-## Adding Skills
-
-Drop a new folder into `{ROOT}/llms_shared_context/skills/`:
-
-```
-skills/
-└── my-new-skill/
-    └── SKILL.md       # Required: main instruction file
-    └── scripts/       # Optional: helper scripts
-    └── examples/      # Optional: reference implementations
-```
-
-### SKILL.md Format
-
-```markdown
----
-name: my-skill-name
-description: What this skill does and when to use it
----
-
-# Skill Name
-
-[Detailed instructions the LLM will follow...]
-```
-
-**All repos automatically get the new skill** via symlink.
-
-## Adding Workflows
-
-Create a new `.md` file in `{ROOT}/llms_shared_context/workflows/`:
-
-```markdown
----
-description: Short description for workflow list
----
-
-# /workflow-name - Title
-
-[Instructions for this workflow...]
-
-## Steps
-
-1. First step
-2. Second step
-```
-
-### Workflow Annotations
-
-- `// turbo` — Auto-run the next command without confirmation
-- `// turbo-all` — Auto-run ALL commands in the workflow
-
-## Tool Compatibility
-
-| Tool | Reads | Skills | Workflows |
-|------|-------|--------|-----------|
-| **Gemini/Antigravity** | `GEMINI.md` + `.agent/` | ✅ Via symlink | ✅ Via symlink |
-| **Claude Code** | `CLAUDE.md` + `.claude/` | ✅ Via `.agent/skills` | ✅ Copies in `.claude/commands/` |
-| **Cursor** | `.cursorrules` | ✅ Via `.agent/skills` | ✅ Via `.agent/workflows` |
-
-## Current Inventory
-
-### Skills (23)
+## Skills
 
 | Category | Skills |
 |----------|--------|
@@ -128,10 +64,11 @@ description: Short description for workflow list
 | **Testing** | playwright-skill, webapp-testing |
 | **Agents** | autonomous-agent-patterns, dispatching-parallel-agents, subagent-driven-development |
 | **Frameworks** | bun-development, react-best-practices, javascript-mastery |
-| **Infrastructure** | mcp-builder, llm-app-patterns |
+| **Infrastructure** | mcp-builder |
 | **Utilities** | file-organizer, app-store-optimization |
+| **Rules** | never-use-rm, xcode |
 
-### Workflows (8)
+## Commands
 
 | Command | Purpose |
 |---------|---------|
@@ -144,49 +81,25 @@ description: Short description for workflow list
 | `/trawl` | Deep codebase exploration |
 | `/grill` | Rigorous requirements interview |
 
-## Syncing Across Machines
+## Adding a new skill
 
-Initialize as a git repo for backup and multi-machine sync:
+Create a folder or file in `skills/`:
 
-```bash
-cd {ROOT}/llms_shared_context
-git init
-git add .
-git commit -m "Initial commit: personal LLM knowledge hub"
-
-# Push to your private repo
-git remote add origin git@github.com:yourusername/llms_shared_context.git
-git push -u origin main
+```
+skills/my-skill/SKILL.md    # folder-based (can include scripts/, references/)
+skills/my-skill.md          # single-file
 ```
 
-On a new machine:
+Run `./install.sh` to symlink it. All machines get it after `git pull && ./install.sh`.
+
+## Syncing across machines
+
 ```bash
-git clone git@github.com:yourusername/llms_shared_context.git {ROOT}/llms_shared_context
+# Machine A: edit and push
+cd ~/Developer/claude-toolkit
+git add -A && git commit -m "feat: add new skill" && git push
+
+# Machine B: pull and relink
+cd ~/Developer/claude-toolkit
+git pull && ./install.sh
 ```
-
-## Maintenance
-
-### Update All Repos After Adding Skills/Workflows
-
-Skills update automatically via symlinks.
-
-For workflows on Claude Code (which uses copies):
-```bash
-for repo in {ROOT}/*/; do
-  if [ -d "$repo/.claude/commands" ]; then
-    {ROOT}/llms_shared_context/scripts/update.sh "$repo"
-  fi
-done
-```
-
-### Clean Up Old Backups
-
-After updating repos, clean up backups:
-```bash
-rm -rf {ROOT}/*/.agent/*.backup
-```
-
-## Version History
-
-- **2025-01-18**: Initial creation with 23 skills, 8 workflows
-- Migrated from `~/.gemini/antigravity/`

@@ -9,8 +9,8 @@ Use this at the end of a session to document everything that happened.
 ## Steps
 
 1. **Identify or create the session directory**
-   - Check if a session directory exists in `.agent/history/` for today
-   - If not, create one: `.agent/history/YYYYMMDD-HHMMSS_<description>/`
+   - Check if a session directory exists in `.claude/history/` for today
+   - If not, create one: `.claude/history/YYYYMMDD-HHMMSS_<description>/`
    - Use "session" as default description if none provided
 
 2. **Write the session summary to `session.md`**

@@ -1,3 +1,8 @@
+---
+name: xcode
+description: Xcode project rules — file detection, folder groups, and best practices for iOS/macOS development
+---
+
 # Xcode Project Rules
 
 ## Files in Project Directory Are Auto-Detected
@@ -38,7 +43,3 @@ If you need to create a new organizational folder:
 1. Create the folder in the filesystem
 2. In Xcode: Right-click parent → "Add Files to [Project]" → Select the folder
 3. Subsequent files in that folder will be auto-detected
-
----
-
-*Last updated: 2025-01-18*

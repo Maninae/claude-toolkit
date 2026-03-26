@@ -21,7 +21,7 @@ Based on the conversation so far, extract 3-7 keywords that represent:
 ### 2. Search Session History
 // turbo
 ```bash
-grep -ri "<keyword1>\|<keyword2>\|<keyword3>" .agent/history/*/BRIEF.md 2>/dev/null | head -20
+grep -ri "<keyword1>\|<keyword2>\|<keyword3>" .claude/history/*/BRIEF.md 2>/dev/null | head -20
 ```
 
 Read the full `session.md` for the 2-3 most relevant matches.
@@ -29,7 +29,7 @@ Read the full `session.md` for the 2-3 most relevant matches.
 ### 3. Search Technical Docs
 // turbo
 ```bash
-grep -ri "<keywords>" .agent/techdocs/ .agent/rules/ .agent/skills/ 2>/dev/null | head -20
+grep -ri "<keywords>" .claude/techdocs/ .claude/rules/ .claude/skills/ 2>/dev/null | head -20
 ```
 
 Read any docs that appear highly relevant.
@@ -57,7 +57,7 @@ For each highly relevant file discovered:
 ### 7. Check Future Features
 // turbo
 ```bash
-ls .agent/future_features/ | head -10
+ls .claude/future_features/ | head -10
 ```
 
 Skim any that relate to the current topic.
