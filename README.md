@@ -1,6 +1,8 @@
 <p align="center">
-  <img src="https://img.shields.io/badge/claude--code-skills_%26_commands-7c3aed?style=for-the-badge" alt="claude-toolkit">
+  <img src="assets/claude-toolkit-mascot.png" width="200" alt="claude-toolkit mascot">
   <br><br>
+  <img src="https://img.shields.io/badge/claude--code-skills_%26_commands-7c3aed?style=for-the-badge" alt="claude-toolkit">
+  <br>
   <img src="https://img.shields.io/badge/commands-10-4f46e5?style=flat-square" alt="10 commands">
   <img src="https://img.shields.io/badge/skills-25-4f46e5?style=flat-square" alt="25 skills">
   <img src="https://img.shields.io/badge/platform-macOS-999?style=flat-square" alt="macOS">
