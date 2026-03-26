@@ -20,45 +20,58 @@ Write READMEs that make people stop scrolling and actually read. Every line earn
 
 ### 1. Hero Section
 - Centered: logo/banner if the project has one, otherwise skip — don't force it
+- For logos/images with dark/light variants, use `<picture>` + `<source media="(prefers-color-scheme: dark)">` so they render correctly in both GitHub themes
 - Project name as `# heading`
-- One-line description: what it does, not what it is. "Sync Claude Code skills across machines" not "A toolkit for managing Claude Code configurations"
-- Badges underneath: build status, version, license, platform — 3-5 max, grouped with `<p align="center">`
+- One-line tagline: what it does, not what it is. Under 15 words. "Sync Claude Code skills across machines" not "A toolkit for managing Claude Code configurations"
+- Badges underneath: build status, version, license, platform — 3-6 max, grouped with `<p align="center">`
+- Close with a `---` to separate the hero from the body
 
-### 2. Value Pitch (2-3 sentences max)
-- What problem does this solve?
-- Why would someone choose this over alternatives?
-- No jargon. A stranger should understand this paragraph.
+### 2. Key Links Line (optional)
+- Place 2-3 essential links on a single bold line: Docs | Demo/Playground | Discord
+- Example: `**[Docs](url)** | **[Playground](url)** | **[Discord](url)**`
+- Only if the project has a docs site or live demo worth linking
 
-### 3. Visual Proof (if applicable)
+### 3. Value Pitch + Features
+- What it does and why someone should care — 2-3 sentences max, no jargon
+- Immediately follow with a bullet list of key features using **bold-first-word** pattern for scannability: `- **Fast**: 10-100x faster than existing linters`
+- If the project has a speed/size advantage, include a benchmark chart image right here
+
+### 4. Visual Proof (if applicable)
 - Screenshot, GIF, or terminal recording showing the tool in action
 - One hero image is worth more than paragraphs of description
 - For CLI tools: a code block showing real terminal output works great
+- For speed claims: bar chart SVG comparing to alternatives (use dark/light variants)
 
-### 4. Quick Start
+### 5. Social Proof (if applicable)
+- Quotes from known users/companies, or a "Used by" row of logos/names
+- Place before installation — builds confidence before asking for commitment
+- Skip this for personal/small projects — it only works if the names carry weight
+
+### 6. Quick Start
 - Copy-paste install + first command
 - Under 4 lines of shell. Get someone from zero to working in 30 seconds.
 - If setup has OS-specific steps, use a table — not separate sections
 
-### 5. Feature Overview
+### 7. Feature Overview
 - Table or bullet list — scannable, not prose
 - Each row: feature name + one-line description
 - If comparing categories, use a table with columns
 
-### 6. Usage / Examples
+### 8. Usage / Examples
 - Real code snippets showing the 2-3 most common patterns
 - Syntax-highlighted, copy-pasteable
 - Show, don't tell: a code example beats a feature description
 
-### 7. How It Works (if non-obvious)
+### 9. How It Works (if non-obvious)
 - ASCII diagram or short explanation of architecture
 - Keep it under 20 lines — link to docs/ for deep dives
 - `<details>` collapsible for anything verbose
 
-### 8. Configuration / API (if needed)
+### 10. Configuration / API (if needed)
 - Table format for options: name, type, default, description
 - Link to full docs if the reference is long
 
-### 9. Contributing + License
+### 11. Contributing + License
 - Brief. At the bottom. Link to CONTRIBUTING.md if it exists.
 
 ---
@@ -73,13 +86,18 @@ Write READMEs that make people stop scrolling and actually read. Every line earn
 
 ## Formatting Rules
 
-- `<p align="center">` for centered hero sections
+- `<p align="center">` for centered hero sections only — body content stays left-aligned
+- `<picture>` + `<source media="(prefers-color-scheme: dark)">` for dark/light image variants
 - Tables over prose for anything with 2+ items and distinguishing properties
-- Horizontal rules (`---`) to visually separate major sections
+- Horizontal rules (`---`) to create visual breathing room between major sections
 - Syntax-highlighted code blocks for all commands and code
-- `<details><summary>` for content that's useful but not essential on first read
+- `<details><summary>` for content that's useful but not essential on first read (alt install methods, advanced config)
+- `> [!NOTE]`, `> [!TIP]`, `> [!IMPORTANT]`, `> [!WARNING]` GitHub admonitions for callouts
 - `<kbd>` tags for keyboard shortcuts
+- **Bold-first-word** in bullet lists for scannability: `- **Fast**: explanation here`
 - Emoji as section markers: sparingly, one per heading max, only if the project's tone supports it
+- Keep paragraphs to 1-3 sentences — if you need more, break into bullets
+- Link generously: every tool, concept, or related project mentioned should be a hyperlink
 
 ## Anti-Patterns — Never Do These
 
@@ -91,6 +109,10 @@ Write READMEs that make people stop scrolling and actually read. Every line earn
 - Wall of text with no visual breaks
 - Dramatic fragment cadence: "X is happening. A big one." — that's an AI tell
 - Grandiose framing: "the tool that changes everything"
+- Changelog in the README — link to CHANGELOG.md or GitHub Releases
+- Verbose API reference inline — link to docs site instead
+- Build/dev instructions in the main README — put those in CONTRIBUTING.md
+- "Generated by" or "Built with" attribution lines
 
 ## Tone
 
