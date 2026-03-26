@@ -10,7 +10,7 @@
 
 # claude-toolkit
 
-A portable collection of [slash commands](https://docs.anthropic.com/en/docs/claude-code/slash-commands) and [skills](https://docs.anthropic.com/en/docs/claude-code/skills) for Claude Code that sync across machines via git. Clone, install, and every Claude Code session picks them up immediately.
+You code on a laptop, a desktop, and a work machine. You build a Claude Code [skill](https://docs.anthropic.com/en/docs/claude-code/skills) on one and want it everywhere. Your teammate writes a useful [slash command](https://docs.anthropic.com/en/docs/claude-code/slash-commands) and you want it too. This repo is the shared toolkit — clone it, run the installer, and every machine gets the same skills and commands instantly. Add new ones from any machine and push them back for everyone.
 
 ```bash
 git clone https://github.com/Maninae/claude-toolkit.git ~/Developer/claude-toolkit
