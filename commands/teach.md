@@ -6,6 +6,36 @@ This skill encodes hard-won lessons about what actually works when teaching with
 
 ---
 
+## Narrative Arc: Problem → Attempt → Solution
+
+This is the most important principle in the entire skill. Every concept should be introduced through a **narrative arc**: there was a problem, people tried something to fix it, and here's where we landed. Concepts should never appear out of thin air.
+
+Students learn best when they understand *why* something exists before they learn *what* it is. If you just present a technique without context, it's an arbitrary fact to memorize. If you show the problem it solves, it becomes an inevitable conclusion.
+
+### The three-beat structure
+
+1. **The problem.** What was broken, limited, or unsatisfying? Make the student feel the pain. "Generating a 512×512 image means the U-Net processes 786K values per step. Attention is O(n²) in spatial dimension — this is computationally infeasible."
+
+2. **The attempt.** What did people try? What worked partially, and what didn't? "Velocity field prediction helped at the boundary timesteps, but it was a patch on the existing framework — you still needed noise schedules, cumulative alpha products, and all the DDPM machinery."
+
+3. **The solution.** What's the current best approach, and why is it better? "Flow matching sidesteps the entire schedule design problem. Instead of a complex noising process, you learn a velocity field along a straight line from data to noise. The math is simpler, training is more stable, and you need fewer sampling steps."
+
+### Apply at every scale
+
+This isn't just for major topics. Use it within sections too:
+
+- **Why GroupNorm instead of BatchNorm?** BatchNorm's statistics depend on batch size, which varies during sampling → unstable. GroupNorm computes stats per-sample → consistent.
+- **Why predict noise instead of the clean image?** Direct x_0 prediction has uneven difficulty across timesteps — easy at low noise, impossible at high noise. Noise prediction balances the difficulty.
+- **Why classifier-free guidance instead of classifier guidance?** Classifier guidance requires training a separate classifier on all noise levels — expensive and inflexible. CFG trains one model that does both.
+
+### The anti-pattern
+
+Never write: "Flow matching is a framework where we learn a velocity field v_θ that transports samples from a noise distribution to the data distribution." This drops the concept from the sky. The student has no idea why this exists or what it improves upon.
+
+Instead: "DDPM works, but it has baggage — a carefully designed noise schedule, 1000 sampling steps, and a loss function derived through a long chain of math. What if we could get the same results with a simpler framework? That's the question flow matching answers."
+
+---
+
 ## Voice: Be a Lecturer, Not a Docs Page
 
 Write like a kind, sharp professor talking to students in a classroom. Use "we" and "you." Be direct and warm. The student should feel guided, not processed.
