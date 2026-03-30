@@ -247,3 +247,48 @@ In implementation modules, don't create exercises that exist in isolation. Make 
 
 ### Redundant repetition
 Say it once, say it well, move on. If a concept was explained in section 2, don't re-explain it in section 5. Reference it: "Using the schedule we built in section 2..."
+
+---
+
+## Prose Quality: Writing That Reads Like a Person Wrote It
+
+### Plain-language glosses for notation
+
+When introducing notation for the first time, immediately follow it with a plain-English gloss. Don't assume the reader can parse notation cold.
+
+**Good:** "$q(x_0 \mid x_t)$ — the probability that some particular clean image $x_0$ was the original source of our current noisy image $x_t$."
+
+**Bad:** "The intractability comes from $q(x_0 \mid x_t)$ — knowing which clean images could have produced a given noisy image."
+
+The good version tells you what the notation *means*. The bad version restates the concept without decoding the symbols.
+
+### Cluster claims with explanations
+
+When you make a claim ("X is better than Y"), the explanation for *why* must immediately follow. Don't insert equations, asides, or other content between the claim and its justification. If the reader has to hold "but why?" in their head for 2+ paragraphs, the writing has failed.
+
+**Corollary — no teasers without payoff:** When you say "X found a much better approach," immediately preview WHAT the approach is: "...a much better approach: predict the noise instead of the mean." The reader needs the destination before the journey.
+
+### Transition clauses between sections
+
+Use concessive or connective clauses to bridge sections: "Although we've focused on X...", "Now that we have X, the question becomes Y...", "Since we now have X in hand...". Without these, sections feel disconnected — the reader arrives at a new heading with no sense of why they're here now.
+
+### No premature implementation details
+
+Don't mention implementation specifics (optimizer, learning rate, normalization range, batch size) before the lecture that properly introduces them. Each detail should appear first where it's taught, not as a throwaway aside earlier.
+
+### Em-dash discipline
+
+Em-dashes are overused in AI-generated writing. Prefer:
+- **Colons** when introducing an explanation
+- **Commas** when connecting related clauses
+- **Periods** when a dramatic pause is really just two sentences
+- Reserve em-dashes for genuine parenthetical insertions
+
+### AI language tells to avoid
+
+- **Hypophora fragments:** "And X? Y." / "The result? X."
+- **Performative transitions:** "Turns out, X" / "Here's the thing:"
+- **Artificial punchiness:** "That's it. That's the [noun]." / "Let's unpack this."
+- **Antithesis flourish:** "isn't just X — it's Y" → rewrite as "not only X but also Y" or a direct positive
+- **Negation pivot:** "X is not A — it's B" → just state B directly, or use "Although X isn't A, it B"
+- **Fake enthusiasm:** Exclamation marks for energy
