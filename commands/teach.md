@@ -284,6 +284,26 @@ Em-dashes are overused in AI-generated writing. Prefer:
 - **Periods** when a dramatic pause is really just two sentences
 - Reserve em-dashes for genuine parenthetical insertions
 
+### Detached voice over "your"
+
+Use professorial, observer framing rather than second-person commands. "The model we've described so far predicts..." not "Your model predicts..." Reserve "you" for genuine instructions ("try changing the learning rate") or orienting phrases ("you'll see that...").
+
+**Good:** "The model we've described so far predicts noise $\epsilon \sim \mathcal{N}(0, I)$..."
+
+**Bad:** "Your model predicts noise $\epsilon \sim \mathcal{N}(0, I)$..."
+
+The good version positions the reader as an observer reasoning about a system. The bad version sounds like a tutorial bot giving instructions.
+
+### Consequence framing for solutions
+
+Present solutions as natural consequences of the problem, not commands. Use "therefore," "a common strategy is to," "this leads to" rather than imperatives.
+
+**Good:** "Therefore, a common strategy is to normalize images to $[-1, 1]$, centering the data around zero to match the noise distribution's symmetry."
+
+**Bad:** "Normalize your images to $[-1, 1]$."
+
+The reader should arrive at the solution as an inevitable conclusion, not feel told what to do. This echoes the problem → attempt → solution arc at the sentence level.
+
 ### AI language tells to avoid
 
 - **Hypophora fragments:** "And X? Y." / "The result? X."

@@ -18,10 +18,10 @@ Sync any locally-created skills or commands into the claude-toolkit repo so they
    - List all files in `~/.claude/commands/`
    - For each file: skip if it's a symlink (already managed by the repo). If it's a real file and does NOT exist in `~/Developer/claude-toolkit/commands/`, it's new.
    - Copy each new command file into `~/Developer/claude-toolkit/commands/`
-   - Then replace the original with a symlink back to the repo copy (to match the install.sh convention):
+   - Then replace the original with a symlink (move to Trash, never rm -rf):
      ```bash
      cp ~/.claude/commands/NEW_FILE ~/Developer/claude-toolkit/commands/NEW_FILE
-     rm ~/.claude/commands/NEW_FILE
+     mv ~/.claude/commands/NEW_FILE ~/.Trash/
      ln -s ~/Developer/claude-toolkit/commands/NEW_FILE ~/.claude/commands/NEW_FILE
      ```
 
@@ -29,10 +29,10 @@ Sync any locally-created skills or commands into the claude-toolkit repo so they
    - List all directories and files in `~/.claude/skills/`
    - For each item: skip if it's a symlink. If it's a real file/directory and does NOT exist in `~/Developer/claude-toolkit/skills/`, it's new.
    - Copy each new skill into `~/Developer/claude-toolkit/skills/` (use `cp -r` for directories)
-   - Then replace the original with a symlink:
+   - Then replace the original with a symlink (move to Trash, never rm -rf):
      ```bash
      cp -r ~/.claude/skills/NEW_ITEM ~/Developer/claude-toolkit/skills/NEW_ITEM
-     rm -rf ~/.claude/skills/NEW_ITEM
+     mv ~/.claude/skills/NEW_ITEM ~/.Trash/
      ln -s ~/Developer/claude-toolkit/skills/NEW_ITEM ~/.claude/skills/NEW_ITEM
      ```
 
