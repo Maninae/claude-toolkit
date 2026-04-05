@@ -245,8 +245,8 @@ Never put a solution cell directly after an exercise description. Always insert 
 ### Isolated exercises
 In implementation modules, don't create exercises that exist in isolation. Make each one build on the previous, culminating in a complete working system.
 
-### Redundant repetition
-Say it once, say it well, move on. If a concept was explained in section 2, don't re-explain it in section 5. Reference it: "Using the schedule we built in section 2..."
+### Redundant repetition (within a lecture)
+Say it once, say it well, move on. If a concept was explained in section 2, don't re-explain it in section 5. Reference it: "Using the schedule we built in section 2..." (For cross-lecture repetition, see the "No cross-lecture repetition" subsection under Prose Quality.)
 
 ---
 
@@ -304,6 +304,26 @@ Present solutions as natural consequences of the problem, not commands. Use "the
 
 The reader should arrive at the solution as an inevitable conclusion, not feel told what to do. This echoes the problem → attempt → solution arc at the sentence level.
 
+### Measured precision over punchy claims
+
+Don't overclaim for rhetorical effect. Prefer honest, hedged language over dramatic quantitative assertions that sound confident but are wrong or exaggerated.
+
+**Good:** "Sampling the timesteps uniformly will spend a large fraction of training time learning from uninformative timesteps at the extremes."
+
+**Bad:** "Uniform sampling wastes half its compute on easy timesteps at the extremes."
+
+"Half" is a specific false claim. "A large fraction" is honest. Similarly: "each of these choices affects training stability" is better than "get any one wrong and the model produces noise." The first is measured and true; the second is dramatic and misleading.
+
+### Causal chains over declarations
+
+Walk through the mechanism rather than dropping a verdict. Show cause → effect so the reader follows the reasoning, not just the conclusion.
+
+**Good:** "Sampling the timesteps uniformly will spend a large fraction of training time learning from uninformative timesteps at the extremes."
+
+**Bad:** "Uniform sampling wastes compute on easy timesteps."
+
+The good version traces the chain: uniform → spends time → on uninformative steps → at the extremes. The bad version declares the conclusion without showing how you get there. Students learn from chains; declarations are just assertions to memorize.
+
 ### AI language tells to avoid
 
 - **Hypophora fragments:** "And X? Y." / "The result? X."
@@ -312,3 +332,23 @@ The reader should arrive at the solution as an inevitable conclusion, not feel t
 - **Antithesis flourish:** "isn't just X — it's Y" → rewrite as "not only X but also Y" or a direct positive
 - **Negation pivot:** "X is not A — it's B" → just state B directly, or use "Although X isn't A, it B"
 - **Fake enthusiasm:** Exclamation marks for energy
+
+### Conversational bullet labels (optional style)
+
+When listing drawbacks, features, or properties as bullets, the bold label can sometimes be written as a casual spoken phrase rather than a formal noun phrase. "You have to train a whole extra model." instead of "Extra model required." This is a stylistic option, not a rule — use it when the tone calls for a more conversational feel.
+
+### Tight callouts
+
+Callout boxes, especially Key Insight callouts, should be concise. One paragraph is often better than three. If an insight needs multiple paragraphs to explain, it may belong in the surrounding prose rather than inside the callout. The callout should capture the punchline, not the full argument.
+
+### Generalize examples
+
+Don't use dataset-specific examples (digit classes, MNIST labels) when the concept being taught is general. Use universal examples (a cat on the moon, a sunset over the ocean) or abstract placeholders (class A, class B) so the reader doesn't associate the technique with a single dataset.
+
+### No cross-lecture repetition
+
+If a concept was explained in a previous lecture's "Looking Ahead" section or in the current lecture's header/roadmap paragraph, don't re-explain it in the first section. The reader just read it. Jump straight into the new material. Reference prior context briefly if needed ("As we saw in Lecture 8, classifier guidance requires an external model"), but don't rehash the full argument.
+
+### Looking Ahead sections
+
+Looking Ahead sections should be brief — typically one paragraph. They can summarize the current lecture and bridge to the next, but keep it tight.

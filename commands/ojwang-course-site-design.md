@@ -227,8 +227,28 @@ This renders normally but adds a dotted teal underline. On hover, a dark popup a
 - Terms that combine multiple symbols into one concept (e.g., `ε_θ(...)` = "the neural network predicting noise")
 - Brief elaborations that help the reader without breaking the flow — a tooltip is lighter than a sentence of prose
 - Use generously throughout equations. If a reader might pause and think "what does this part mean?", it's a good candidate
+- **Every Definition callout with a complex formula should have at least one tooltip** on the most opaque term
+
+**Where to place tooltips — the geometric mean rule:**
+
+Don't tooltip the simplest terms (the student already knows those) or the outermost structure (the surrounding text explains that). Instead, target the **geometric mean of difficulty** — the mid-complexity subexpression that, once understood, unlocks the rest of the formula.
+
+Think of a formula as a tree of nested expressions, each with a "parsing difficulty level" for a student. If the formula is `Level2(Level2, Level5(Level3, Level3))`, the best tooltip target is the `Level5(...)` subexpression — it's the bottleneck where comprehension stalls.
+
+**Example:** In $L_{\text{simple}} = \mathbb{E}\left[\left\| \varepsilon - \varepsilon_\theta(\sqrt{\bar{\alpha}_t}\, x_0 + \sqrt{1-\bar{\alpha}_t}\, \varepsilon, t) \right\|^2\right]$:
+- The outer $\mathbb{E}[\cdot]$ and $\|\cdot\|^2$ are simple (expectation, squared norm) — no tooltip needed
+- $\varepsilon$ alone is simple (the noise we sampled) — no tooltip needed
+- $\varepsilon_\theta(\ldots, t)$ is the geometric mean: "the neural network (with weights θ) predicting what noise was added" — **good tooltip target**
+- The argument $\sqrt{\bar{\alpha}_t}\, x_0 + \sqrt{1-\bar{\alpha}_t}\, \varepsilon$ could get a second tooltip: "the noisy image at timestep t, constructed from the clean image and sampled noise"
 
 **Syntax:** `\htmlData{tip=Your tooltip text here}{LaTeX content to underline}`
+
+**Limitations — tip text must be plain ASCII:**
+- No `%` (LaTeX comment character — use "percent" instead)
+- No `()` parentheses (break KaTeX parsing — use commas or dashes to rephrase)
+- No unicode characters like `θ`, `—`, `α` (use plain ASCII: "theta", "alpha", commas instead of em-dashes)
+- No nested `\htmlData` (make tooltips siblings, not parent-child)
+- No LaTeX commands in tip text — plain ASCII English only
 
 ---
 
