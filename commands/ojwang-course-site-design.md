@@ -303,6 +303,10 @@ Decisions made during development, with rationale:
 
 14. **Section numbers on all h2 headings:** Every `<h2>` inside `<article>` gets a `<span class="section-number">X.Y</span>` prefix (e.g., "3.5"). Orange monospace, 0.75em, 0.7 opacity. Only h2s, not h3 subsections. Header h2 outside article is not numbered.
 
+15. **No label/caption occlusion:** Labels and captions on visualizations must never overlap each other or be hidden behind visual elements. If labels are too close, spread the underlying data points, offset label positions, or stagger label heights. The whole point of a label is to be read: if it's partially obscured or overlapping another label, it has failed. Validate label placement visually (screenshot) before committing.
+
+16. **Centered visuals with max-width:** All canvas and SVG visualizations should render at a capped max width (e.g., 900px) and center horizontally with `margin: auto` when the container is wider. Never stretch a visualization to `width: 100%` of an uncapped container — this creates lopsided padding on wide screens. The pattern: set explicit pixel width in JS (capped to container or max), then `canvas.style.margin = '... auto ... auto'`. This is the default for all visuals unless otherwise specified.
+
 ---
 
 ## Checklist: Adding a New Lecture
